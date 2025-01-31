@@ -55,6 +55,9 @@ class SimpleStackTest {
         assertFalse(stack.isEmpty(), "The stack must be not empty");
         assertEquals(3, stack.getSize(),"The stack must constain 3 items");
         assertSame( item2, stack.peek(),"The pushed item must be on top of the stack");
+
+        // When we try to push a null item
+        assertThrows(NullPointerException.class, ()->stack.push(null),"NullPointerException not thrown");
     }
 
     @Test

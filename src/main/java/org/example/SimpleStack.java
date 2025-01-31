@@ -26,18 +26,25 @@ public class SimpleStack implements Stack {
 
     /**
      * Pushes an item onto the top of this stack.
-     * null item is allowed.
      *
      * @param item an item of the stack
+     * @throws NullPointerException if the item is null.
      */
     @Override
     public void push(Item item) {
+
+        if (item == null) {
+            throw new NullPointerException("The pushed item is must not be null");
+        }
+
         pile.add(taille, item);
         taille++;
     }
 
     /**
      * Looks at the object at the top of this stack without removing it from the stack.
+     *
+     * @throws EmptyStackException if this stack is empty.
      */
     @Override
     public Item peek() throws EmptyStackException {
