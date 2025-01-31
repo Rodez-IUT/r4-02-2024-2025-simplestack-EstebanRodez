@@ -13,7 +13,7 @@ class SimpleStackTest {
     @DisplayName("Test the state of a newly created slack")
     public void testCreateEmptyStack() { // Test case
 
-        // When a freshly stack is created
+        // When a fresh stack is created
         Stack stack = new SimpleStack();
 
         // Then… (oracle)
@@ -34,7 +34,7 @@ class SimpleStackTest {
 
         // Then…
         assertFalse(stack.isEmpty(), "The stack must not be empty");
-        assertEquals(1, stack.getSize(),"The stack must constain 1 item");
+        assertEquals(1, stack.getSize(),"The stack must contain 1 item");
         assertSame( item, stack.peek(),"The pushed item must be is on top of the stack");
 
         // Given a new item to add
@@ -45,19 +45,20 @@ class SimpleStackTest {
 
         // Then...
         assertFalse(stack.isEmpty(), "The stack must be not empty");
-        assertEquals(2, stack.getSize(),"The stack must constain 2 items");
-        assertSame( item2, stack.peek(),"The pushed item must be on top of the stack");
+        assertEquals(2, stack.getSize(),"The stack must contain 2 items");
+        assertSame(item2, stack.peek(),"The pushed item must be on top of the stack");
 
         // When we add the same item
         stack.push(item2);
 
         // Then...
         assertFalse(stack.isEmpty(), "The stack must be not empty");
-        assertEquals(3, stack.getSize(),"The stack must constain 3 items");
+        assertEquals(3, stack.getSize(),"The stack must contain 3 items");
         assertSame( item2, stack.peek(),"The pushed item must be on top of the stack");
 
         // When we try to push a null item
-        assertThrows(NullPointerException.class, ()->stack.push(null),"NullPointerException not thrown");
+        assertThrows(NullPointerException.class, ()->stack.push(null), "NullPointerException not thrown");
+        assertEquals(3, stack.getSize(),"The stack must contain 3 items");
     }
 
     @Test
@@ -73,7 +74,7 @@ class SimpleStackTest {
 
         // Then…
         assertFalse(stack.isEmpty(), "The stack must not be empty");
-        assertEquals(1, stack.getSize(),"The stack must constain 1 item");
+        assertEquals(1, stack.getSize(),"The stack must contain 1 item");
         assertSame( item, stack.peek(),"The pushed item must be is on top of the stack");
 
         // Given a new item to add
@@ -84,14 +85,14 @@ class SimpleStackTest {
 
         // Then...
         assertFalse(stack.isEmpty(), "The stack must be not empty");
-        assertEquals(2, stack.getSize(),"The stack must constain 2 items");
+        assertEquals(2, stack.getSize(),"The stack must contain 2 items");
 
         // When we remove the new item
         stack.pop();
 
         // Then…
         assertFalse(stack.isEmpty(), "The stack must not be empty");
-        assertEquals(1, stack.getSize(),"The stack must constain 1 item");
+        assertEquals(1, stack.getSize(),"The stack must contain 1 item");
         assertSame( item, stack.peek(),"The first item pushed must be is on top of the stack");
 
         // When we remove the last item
@@ -99,7 +100,7 @@ class SimpleStackTest {
 
         // Then…
         assertTrue(stack.isEmpty(), "The stack must be empty");
-        assertEquals(0, stack.getSize(),"The stack must constain 0 item");
+        assertEquals(0, stack.getSize(),"The stack must contain 0 item");
     }
 
     @Test
@@ -115,7 +116,7 @@ class SimpleStackTest {
 
         // Then…
         assertFalse(stack.isEmpty(), "The stack must not be empty");
-        assertEquals(1, stack.getSize(),"The stack must constain 1 item");
+        assertEquals(1, stack.getSize(),"The stack must contain 1 item");
         assertSame( item, stack.peek(),"The pushed item must be is on top of the stack");
 
         // Given a new item to add
@@ -126,7 +127,7 @@ class SimpleStackTest {
 
         // Then...
         assertFalse(stack.isEmpty(), "The stack must be not empty");
-        assertEquals(2, stack.getSize(),"The stack must constain 2 items");
+        assertEquals(2, stack.getSize(),"The stack must contain 2 items");
         assertSame( item2, stack.peek(),"The pushed item must be on top of the stack");
         assertNotSame( item, stack.peek(),"The first item must be not on top of the stack");
 
@@ -135,7 +136,7 @@ class SimpleStackTest {
 
         // Then...
         assertFalse(stack.isEmpty(), "The stack must be not empty");
-        assertEquals(3, stack.getSize(),"The stack must constain 3 items");
+        assertEquals(3, stack.getSize(),"The stack must contain 3 items");
         assertSame( item2, stack.peek(),"The pushed item must be on top of the stack");
         assertNotSame( item, stack.peek(),"The first item must be not on top of the stack");
 
@@ -145,7 +146,7 @@ class SimpleStackTest {
 
         // Then...
         assertFalse(stack.isEmpty(), "The stack must be not empty");
-        assertEquals(1, stack.getSize(),"The stack must constain 3 items");
+        assertEquals(1, stack.getSize(),"The stack must contain 3 items");
         assertNotSame( item2, stack.peek(),"The pushed item must be on top of the stack");
         assertSame( item, stack.peek(),"The first item must be not on top of the stack");
     }
@@ -156,7 +157,7 @@ class SimpleStackTest {
         // Given an empty stack
         Stack stack = new SimpleStack();
 
-        // When we "pop" the stack, should throws an EmptyStackException.
+        // When we "pop" the stack, should throw an EmptyStackException.
         //assertThrows(EmptyStackException.class, ()->stack.pop(), "EmptyStackException not thrown");
         assertThrows(EmptyStackException.class, stack::pop, "EmptyStackException not thrown");
 
@@ -179,7 +180,7 @@ class SimpleStackTest {
         // Given an empty stack
         Stack stack = new SimpleStack();
 
-        // When we "pop" the stack, should throws an EmptyStackException.
+        // When we "pop" the stack, should throw an EmptyStackException.
         //assertThrows(EmptyStackException.class, ()->stack.pop(), "EmptyStackException not thrown");
         assertThrows(EmptyStackException.class, stack::peek, "EmptyStackException not thrown");
 
